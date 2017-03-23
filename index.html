@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-indigo.min.css">
 	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 	<script>
 		function redirectToLogin(){
@@ -15,14 +16,26 @@
 		function redirectToRegister(){
 			window.location = "register.html"
 		}
+
+		$(document).ready(function(){
+			if(sessionStorage.getItem('loggedIn') != null){
+				$('#name').append(localStorage.username);
+				$('#login').hide();
+				$('#register').hide();
+			} else{
+				$('#welcomemsg').hide();
+			}
+		});
 	</script>
 </head>
 <body>
-
-	<div style="padding:10px;position:absolute;right:20px">
+	<div id="welcomemsg" style="padding:10px;position:absolute;right:20px;">
+		<h5 style="color:white;" id="name">Welcome, </h5>
+	</div>
+	<div id="login" style="padding:10px;position:absolute;right:20px">
 		<button style="width:100px" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored show-modal" onclick="redirectToLogin()">Log In</button>
 	</div>
-	<div style="padding:10px;position:absolute;right:20px;top:40px;">
+	<div id="register" style="padding:10px;position:absolute;right:20px;top:40px;">
 		<button style="width:100px" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored show-modal" onclick="redirectToRegister()">Register</button>
 	</div>
 	<div id="background">
@@ -52,8 +65,10 @@
 		<div id="body">
 			<div>
 				<div>
-					<div class="featured">
-						<img src="images/Call-of-Duty-Infinite-Warfare-PC.jpg" alt="">
+					<div class="featured" style="position:relative;">
+						<div style="position:absolute;left:153px;top:111px;">
+							<img src="images/Call-of-Duty-Infinite-Warfare-PC.jpg" alt="" height="361px"/>
+						</div>
 					</div>
 					<div class="section">
 						<div>
